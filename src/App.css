@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+#root > div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
