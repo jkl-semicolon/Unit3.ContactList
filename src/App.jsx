@@ -15,7 +15,7 @@ const getUsers = async (setUserList) => {
   };
 };
 
-const SelectedContact = ({selectedContact}) => {
+const SelectedContact = ({selectedContact, setSelectedContact}) => {
   if (selectedContact) {
     return (
       <div>
@@ -29,6 +29,7 @@ const SelectedContact = ({selectedContact}) => {
           <h3>{selectedContact.phone}</h3>
           <h3>{selectedContact.username}</h3>
         </div>
+        <button onClick={()=>{setSelectedContact(null)}}>Go Back</button>
       </div>
     );
   }
@@ -38,13 +39,21 @@ const App = () => {
   const [userList, setUserList] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
   useEffect(() => {getUsers(setUserList)}, []);
-  return (
-    <>
-      <SelectedContact selectedContact={selectedContact}/>
-      <h1>Contact List</h1>
-      <NameEmailPhone userList={userList} setSelectedContact={setSelectedContact}/>
-    </>
-  );
+  if (selectedContact) {
+    return (
+      <>
+        <h1>Contact List</h1>
+        <SelectedContact selectedContact={selectedContact} setSelectedContact={setSelectedContact}/>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>Contact List</h1>
+        <NameEmailPhone userList={userList} setSelectedContact={setSelectedContact}/>
+      </>
+    );
+  } 
 };
 
 export default App;
