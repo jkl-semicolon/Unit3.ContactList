@@ -1,11 +1,14 @@
-const NameEmailPhone = ({userList}) => {
+const NameEmailPhone = ({userList, setSelectedContact}) => {
   return (
     <div>
       { ['Name','Email','Phone'].map((x) => {
         return (
           <div key={x}>
             <h3>{`${x} :`}</h3>
-            <ul>{userList.map(user => <li key={user.id}>{user[x.toLowerCase()]}</li>)}</ul>
+            <ul>{userList.map(user => <li 
+                                        key={user.id}
+                                        onClick={() =>{setSelectedContact(user)}}
+                                      >{user[x.toLowerCase()]}</li>)}</ul>
           </div>
         );
       })}
