@@ -15,6 +15,9 @@ const getUsers = async (setUserList) => {
   };
 };
 
+// was lazy.. didn't separate SelectedContact component into its own .jsx,
+// and also did not remove the repetition in the code...
+// nor style or label the different categories well...
 const SelectedContact = ({selectedContact, setSelectedContact}) => {
   if (selectedContact) {
     return (
@@ -44,7 +47,7 @@ const App = () => {
   if (selectedContact) {
     return (
       <>
-        <h1>Contact List</h1>
+        <h1>Selected Contact</h1>
         <SelectedContact selectedContact={selectedContact} setSelectedContact={setSelectedContact}/>
       </>
     );
