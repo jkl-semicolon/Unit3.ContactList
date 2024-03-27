@@ -28,6 +28,8 @@ const SelectedContact = ({selectedContact, setSelectedContact}) => {
           <h3>{selectedContact.website}</h3>
           <h3>{selectedContact.phone}</h3>
           <h3>{selectedContact.username}</h3>
+          <h3>{selectedContact.address.geo.lat}</h3>
+          <h3>{selectedContact.address.geo.lng}</h3>
         </div>
         <button onClick={()=>{setSelectedContact(null)}}>Go Back</button>
       </div>
