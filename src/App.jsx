@@ -20,9 +20,7 @@ const App = () => {
   return (
     <>
       <h1>Contact List</h1>
-      <div>
-        <NameEmailPhone userList={userList}/>
-      </div>
+      <NameEmailPhone userList={userList}/>
     </>
   );
 };

@@ -1,6 +1,6 @@
 const NameEmailPhone = ({userList}) => {
   return (
-    <>
+    <div>
       { ['Name','Email','Phone'].map((x) => {
         return (
           <div key={x}>
@@ -9,7 +9,7 @@ const NameEmailPhone = ({userList}) => {
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 
