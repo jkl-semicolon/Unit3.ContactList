@@ -3,51 +3,18 @@ import {useEffect, useState} from 'react';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/'
 
-const Names = (props) => {
-  console.log(props);
+const NameEmailPhone = ({userList}) => {
   return (
-    <div>
-      <h3>Name</h3>
-      <ul>
-        {
-          props.userList.map((user) => {
-            return <li key={user.id}>{user.name}</li>
-          })
-        }
-      </ul>
-    </div>
-  );
-};
-
-const Email = (props) => {
-  console.log(props);
-  return (
-    <div>
-      <h3>Email</h3>
-      <ul>
-        {
-          props.userList.map((user) => {
-            return <li key={user.id}>{user.email}</li>
-          })
-        }
-      </ul>
-    </div>
-  );
-};
-
-const Phone = (props) => {
-  console.log(props);
-  return (
-    <div>
-      <h3>Phone</h3>
-      <ul>
-        {
-          props.userList.map((user) => {
-            return <li key={user.id}>{user.phone}</li>
-          })
-        }
-      </ul>
-    </div>
+    <>
+      { ['Name','Email','Phone'].map((x) => {
+        return (
+          <div key={x}>
+            <h3>{`${x} :`}</h3>
+            <ul>{userList.map(user => <li key={user.id}>{user[x.toLowerCase()]}</li>)}</ul>
+          </div>
+        );
+      })}
+    </>
   );
 };
 
@@ -58,9 +25,11 @@ const App = () => {
   useEffect(()=>{
     const getUsers = async () => {
       const response = await fetch(API_URL + 'users');
+      console.log(response);
       const json = await response.json();
-      // console.log(json);
-      setUserList(json);
+      console.log(json);
+      console.log(userList);
+      setUserList(json)
     };
     getUsers();
   }, [],
@@ -72,9 +41,7 @@ const App = () => {
     <>
       <h1>Contact List</h1>
       <div>
-        <Names userList={userList}/>
-        <Email userList={userList}/>
-        <Phone userList={userList}/>
+        <NameEmailPhone userList={userList}/>
       </div>
     </>
   );
